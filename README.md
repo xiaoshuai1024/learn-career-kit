@@ -49,6 +49,34 @@ make gap              # → 与目标岗位的差距矩阵
 
 浏览器打开 `docs/能力评估报告.html` 查看雷达图 + 进步趋势折线。
 
+## 核心命令
+
+| 命令 | 说明 |
+|------|------|
+| `/study` | 自动从薄弱项选题（优先评分 0-1 的技能），完整学习材料 + 知识检测 + 模拟面试 |
+| `/study <主题>` | 学习指定主题（如 `/study MCP协议`），按学习材料粒度规范输出 |
+| `/study review` | 间隔重复复习最近学过的知识点 |
+| `/study log` | 查看学习历史和统计 |
+| `/skill-test <方向>` | 测试某方向全部技能（前端/后端/AI工程化/全栈架构/Python/管理） |
+| `/skill-test <技能点>` | 测试具体技能（如 `/skill-test React原理`），2-3 题由浅入深 |
+
+两个命令完成后都会自动：追加快照 → 重跑报告脚本 → 归档错题（score ≤ 40 强制归档）→ 更新学习记录/清单/生词本。
+
+## Skills
+
+`.agents/skills/` 内置通用写作与思辨技能（均可被 Agent 自动触发）：
+
+| Skill | 用途 |
+|-------|------|
+| `grill-me` | 对方案/设计进行高强度连环追问，检验思考漏洞 |
+| `avoid-ai-writing` | 审计并改写内容，去除 AI 写作痕迹 |
+| `writing-style-zh` | 中文叙事场景（简历/面试话术/技术博客）去 AI 味 |
+| `detect-ai` | 检测文本是否为 AI 生成，给出评分与指标 |
+
+## OpenSpec 变更管理
+
+项目使用 [OpenSpec](https://openspec.dev) 管理规格与变更：基线能力以 spec 形式登记在 `openspec/specs/`，改动走 `/opsx:propose → apply → archive` 流程（见 `.claude/commands/opsx/`）。
+
 ## 目录导航
 
 | 内容 | 位置 |
