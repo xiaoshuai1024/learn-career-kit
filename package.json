@@ -1,0 +1,17 @@
+{
+  "name": "learn-career-kit",
+  "version": "0.1.0",
+  "description": "个人学习 + 职业决策知识库框架（能力评估 × 系统学习 × 知识沉淀）",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "report": "node scripts/gen-skill-report.mjs",
+    "gap": "node scripts/job-gap-report.mjs",
+    "pdf2md": "python3 scripts/pdf2md.py",
+    "md2pdf": "node scripts/md2pdf.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}

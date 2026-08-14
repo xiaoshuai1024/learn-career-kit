@@ -1,0 +1,253 @@
+/* ============================================
+   简历 PDF 样式模板 — 还原 BOSS直聘导出版视觉风格
+   字体：阿里巴巴普惠体（已装到 ~/Library/Fonts/，系统级生效）
+   安装：cp cv/fonts/*.ttf ~/Library/Fonts/（首次设置，见 README）
+   字体名识别为 "Alibaba PuHuiTi"（带空格），CSS 需匹配
+   ============================================ */
+
+@page {
+  size: A4;
+  margin: 12mm 14mm 12mm 14mm;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Alibaba PuHuiTi（系统字体名带空格）；fallback 到 PingFang/黑体族 */
+  font-family: "Alibaba PuHuiTi 3.0", "Alibaba PuHuiTi", "AlibabaPuHuiTi", "PingFang SC", "Heiti SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 9.8pt;
+  line-height: 1.85;
+  color: #333;
+  background: #fff;
+}
+
+/* ========== 姓名与联系方式 ========== */
+
+.resume-header {
+  margin-bottom: 16px;
+}
+
+.resume-header h1 {
+  font-size: 22.5pt;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+}
+
+.resume-header .contact-info {
+  font-size: 9.8pt;
+  color: #333;
+  line-height: 1.85;
+}
+
+.resume-header .contact-info .sep {
+  color: #ccc;
+  margin: 0 6px;
+}
+
+.resume-header .contact-info .subtitle {
+  color: #333;
+  font-size: 9.8pt;
+  margin-top: 2px;
+}
+
+/* ========== 章节 ========== */
+
+.section {
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 15pt;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 6px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid #C0C3CC;
+}
+
+/* ========== 个人总结 ========== */
+
+.summary {
+  font-size: 9.8pt;
+  line-height: 1.85;
+  color: #333;
+}
+
+.summary p { margin-bottom: 2px; }
+
+/* ========== 技能 ========== */
+
+.skills-section-title {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #000;
+  margin: 6px 0 3px 0;
+}
+
+.skills-grid ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skills-grid li {
+  font-size: 9.8pt;
+  color: #333;
+  padding-left: 0;
+  margin-bottom: 1px;
+  line-height: 1.7;
+}
+
+/* ========== 工作经历 ========== */
+
+.experience-item {
+  margin-bottom: 12px;
+  page-break-inside: avoid;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 1px;
+}
+
+.experience-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #000;
+}
+
+.experience-company {
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #000;
+}
+
+.experience-date {
+  font-size: 9.8pt;
+  color: #666;
+  white-space: nowrap;
+}
+
+.experience-sub {
+  font-size: 10.5pt;
+  color: #000;
+  font-weight: 500;
+  margin: 4px 0 2px 0;
+}
+
+.experience-desc {
+  font-size: 9.8pt;
+  color: #333;
+  line-height: 1.85;
+  padding-left: 0;
+}
+
+.experience-desc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.experience-desc li {
+  position: relative;
+  padding-left: 0;
+  margin-bottom: 1px;
+  line-height: 1.7;
+}
+
+.experience-desc li::before {
+  content: none;
+}
+
+.experience-desc strong {
+  font-weight: 700;
+  color: #000;
+}
+
+/* ========== 项目经历 ========== */
+
+.project-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #000;
+  margin: 8px 0 2px 0;
+}
+
+.project-desc {
+  font-size: 9.8pt;
+  color: #333;
+  line-height: 1.85;
+  margin-bottom: 2px;
+}
+
+.project-desc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project-desc li {
+  font-size: 9.8pt;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1px;
+  padding-left: 0;
+}
+
+/* ========== 教育 ========== */
+
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.education-school {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #000;
+}
+
+.education-major {
+  font-size: 10.5pt;
+  color: #000;
+}
+
+.education-date {
+  font-size: 9.8pt;
+  color: #666;
+}
+
+/* ========== 通用 ========== */
+
+h1 { font-size: 22.5pt; font-weight: 700; color: #000; }
+h2 { font-size: 15pt; font-weight: 700; color: #000; margin: 10px 0 6px 0; padding-bottom: 3px; border-bottom: 1.5px solid #C0C3CC; }
+h3 { font-size: 12pt; font-weight: 700; color: #000; margin: 8px 0 3px 0; }
+h4 { font-size: 11pt; font-weight: 700; color: #000; margin: 6px 0 3px 0; }
+h5 { font-size: 10.5pt; font-weight: 600; color: #000; margin: 4px 0 2px 0; }
+
+p {
+  font-size: 9.8pt;
+  color: #333;
+  line-height: 1.85;
+  margin-bottom: 2px;
+}
+
+strong {
+  font-weight: 700;
+  color: #000;
+}
+
+/* ========== 打印优化 ========== */
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

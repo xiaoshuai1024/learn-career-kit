@@ -1,0 +1,1682 @@
+{
+  "meta": {
+    "updated": "2026-01-15",
+    "owner": "张三",
+    "direction": "技术总监 > 架构师 > 全栈（示例数据，替换为你自己的方向）",
+    "scale": [
+      {
+        "v": 0,
+        "label": "待评估"
+      },
+      {
+        "v": 20,
+        "label": "不了解"
+      },
+      {
+        "v": 40,
+        "label": "了解概念"
+      },
+      {
+        "v": 60,
+        "label": "能使用"
+      },
+      {
+        "v": 80,
+        "label": "熟练掌握"
+      },
+      {
+        "v": 100,
+        "label": "精通/能教别人"
+      }
+    ],
+    "max": 100,
+    "thresholds": {
+      "pass": 0.6,
+      "compete": 0.8
+    },
+    "scoringPolicy": {
+      "principle": "从严评分，自评应略低于真实水平，留安全边际",
+      "rules": [
+        "档位取证据能支撑的最高档的下一档（留一档安全边际）",
+        "note 含'根本错误/说反/对调/未系统学/概念混淆'等硬伤 → 强制 ≤40",
+        "note 含'能用/理解到位'但有关键点待巩固 → 不超过 60",
+        "note 含'独立交付/掌握好'但自评偏满 → 不超过 80",
+        "20 分为下限，不破到 0（0=待评估，语义不同）"
+      ],
+      "recalibratedAt": "2026-07-03",
+      "recalibrateNote": "对历史 35 项已评分按下调一档（-20）重估，详见当日 snapshot"
+    },
+    "about": "示例数据：技能树与岗位权重可直接复用，评分/snapshots 为虚构演示"
+  },
+  "dimensions": [
+    {
+      "id": "frontend",
+      "name": "前端能力",
+      "groups": [
+        {
+          "name": "1.1 基础（面试必考）",
+          "skills": [
+            {
+              "id": "html-css",
+              "name": "HTML5 / CSS3",
+              "score": 80
+            },
+            {
+              "id": "js",
+              "name": "JavaScript（ES6+）",
+              "score": 40
+            },
+            {
+              "id": "ts",
+              "name": "TypeScript（类型定义、接口、泛型）",
+              "score": 80
+            },
+            {
+              "id": "browser",
+              "name": "浏览器原理（渲染流程、事件循环、存储）",
+              "score": 40
+            },
+            {
+              "id": "network",
+              "name": "网络基础（HTTP/HTTPS、跨域、缓存）",
+              "score": 20
+            },
+            {
+              "id": "dsa",
+              "name": "数据结构与算法基础",
+              "score": 60
+            }
+          ]
+        },
+        {
+          "name": "1.2 框架",
+          "skills": [
+            {
+              "id": "vue3",
+              "name": "Vue 3 全家桶（Router/Pinia/Vite）",
+              "score": 40
+            },
+            {
+              "id": "react18",
+              "name": "React 18+（Hooks/状态管理/Next.js）",
+              "score": 80
+            },
+            {
+              "id": "framework-principle",
+              "name": "框架原理（虚拟DOM/diff/响应式）",
+              "score": 60
+            }
+          ]
+        },
+        {
+          "name": "1.3 工程化",
+          "skills": [
+            {
+              "id": "build-tool",
+              "name": "构建工具（Webpack/Vite loader/plugin）",
+              "score": 80
+            },
+            {
+              "id": "css-solution",
+              "name": "CSS 方案（Tailwind/SCSS/Less）",
+              "score": 60
+            },
+            {
+              "id": "code-quality",
+              "name": "代码质量（ESLint/Prettier/Husky）",
+              "score": 20
+            },
+            {
+              "id": "cicd",
+              "name": "CI/CD 基础",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "1.4 性能优化",
+          "skills": [
+            {
+              "id": "load-perf",
+              "name": "加载性能（分包/懒加载/CDN/预渲染）",
+              "score": 60
+            },
+            {
+              "id": "render-perf",
+              "name": "渲染性能（帧率/重绘回流/虚拟列表）",
+              "score": 20
+            },
+            {
+              "id": "monitor",
+              "name": "监控（埋点/FP/FCP/LCP）",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "1.5 青岛特色加分",
+          "skills": [
+            {
+              "id": "miniprogram",
+              "name": "微信小程序开发",
+              "score": 20
+            },
+            {
+              "id": "h5-mobile",
+              "name": "H5 移动端适配",
+              "score": 80
+            },
+            {
+              "id": "node-bff",
+              "name": "Node.js BFF 层",
+              "score": 80
+            },
+            {
+              "id": "micro-frontend",
+              "name": "微前端架构",
+              "score": 60
+            }
+          ]
+        },
+        {
+          "name": "1.6 AI 交互层（前端侧）",
+          "skills": [
+            {
+              "id": "sse",
+              "name": "SSE 流式接收（EventSource/ReadableStream）",
+              "score": 40
+            },
+            {
+              "id": "streaming-md",
+              "name": "流式 Markdown 渲染",
+              "score": 20
+            },
+            {
+              "id": "multi-turn-state",
+              "name": "多轮对话状态管理",
+              "score": 60
+            },
+            {
+              "id": "toolcall-ui",
+              "name": "Tool Calling UI 展示",
+              "score": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "name": "后端能力",
+      "groups": [
+        {
+          "name": "2.1 Java 核心（面试必考）",
+          "skills": [
+            {
+              "id": "java",
+              "name": "Java 8-21（集合/IO/反射/泛型）",
+              "score": 60
+            },
+            {
+              "id": "jvm",
+              "name": "JVM（内存模型/GC调优/类加载）",
+              "score": 80
+            },
+            {
+              "id": "concurrency",
+              "name": "并发编程（synchronized/AQS/线程池/CompletableFuture）",
+              "score": 80
+            },
+            {
+              "id": "dsa",
+              "name": "数据结构与算法",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "2.2 Spring 全家桶",
+          "skills": [
+            {
+              "id": "springboot",
+              "name": "Spring Boot（自动装配/Actuator）",
+              "score": 40
+            },
+            {
+              "id": "springmvc",
+              "name": "Spring MVC（处理流程/拦截器）",
+              "score": 60
+            },
+            {
+              "id": "spring-tx",
+              "name": "Spring 事务（@Transactional/传播行为）",
+              "score": 40
+            },
+            {
+              "id": "spring-security",
+              "name": "Spring Security 鉴权",
+              "score": 40
+            },
+            {
+              "id": "spring-cloud",
+              "name": "Spring Cloud（Nacos/Gateway/Feign）",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "2.3 数据库",
+          "skills": [
+            {
+              "id": "mysql",
+              "name": "MySQL（索引/事务/MVCC/SQL优化）",
+              "score": 40
+            },
+            {
+              "id": "redis",
+              "name": "Redis（数据结构/分布式锁/缓存策略）",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "2.4 中间件",
+          "skills": [
+            {
+              "id": "mq",
+              "name": "消息队列（RabbitMQ/Kafka）",
+              "score": 80
+            },
+            {
+              "id": "es",
+              "name": "Elasticsearch",
+              "score": 60
+            },
+            {
+              "id": "nginx",
+              "name": "Nginx（反向代理/负载均衡）",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "2.5 工程化",
+          "skills": [
+            {
+              "id": "docker",
+              "name": "Docker + Docker Compose",
+              "score": 80
+            },
+            {
+              "id": "linux",
+              "name": "Linux 基本操作",
+              "score": 40
+            },
+            {
+              "id": "k8s",
+              "name": "K8s 容器编排",
+              "score": 60
+            },
+            {
+              "id": "ops-monitor",
+              "name": "监控（Prometheus/Grafana）",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "2.0 多语言广度（架构师第二语言）",
+          "skills": [
+            {
+              "id": "go",
+              "name": "Go 语言（架构师第二语言）",
+              "score": 80,
+              "keywords": [
+                "Go",
+                "Golang",
+                "Gin",
+                "Echo",
+                "goroutine",
+                "channel",
+                "Go工程"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "2.6 大数据与流计算（架构师高频）",
+          "skills": [
+            {
+              "id": "flink",
+              "name": "Flink 实时计算",
+              "score": 80,
+              "keywords": [
+                "Flink",
+                "流计算",
+                "实时计算",
+                "Watermark",
+                "State Backend",
+                "Checkpoint"
+              ]
+            },
+            {
+              "id": "bigdata",
+              "name": "大数据体系（Spark/Hudi/Iceberg）",
+              "score": 80,
+              "keywords": [
+                "Spark",
+                "Hudi",
+                "Iceberg",
+                "Hive",
+                "数据湖",
+                "湖仓一体",
+                "数仓"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI 工程化能力（非算法方向）",
+      "groups": [
+        {
+          "name": "3.1 AI 框架",
+          "skills": [
+            {
+              "id": "spring-ai",
+              "name": "Spring AI（ChatClient/@Tool/SSE/VectorStore）",
+              "score": 60
+            },
+            {
+              "id": "langchain",
+              "name": "LangChain / LlamaIndex",
+              "score": 60
+            },
+            {
+              "id": "dify-coze",
+              "name": "Dify / Coze 低代码平台",
+              "score": 60
+            }
+          ]
+        },
+        {
+          "name": "3.2 RAG 完整链路",
+          "skills": [
+            {
+              "id": "rag-pipeline",
+              "name": "文档加载 → 切片 → Embedding → 存储",
+              "score": 40
+            },
+            {
+              "id": "chunking-strategy",
+              "name": "切片策略（大小/重叠率）",
+              "score": 80
+            },
+            {
+              "id": "retrieval-opt",
+              "name": "检索优化（混合检索/Rerank/MMR）",
+              "score": 60
+            },
+            {
+              "id": "prompt-token",
+              "name": "Prompt 拼接与 Token 预算控制",
+              "score": 20
+            },
+            {
+              "id": "rag-eval",
+              "name": "生成质量评估与反馈闭环",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "3.3 Agent 智能体",
+          "skills": [
+            {
+              "id": "react-loop",
+              "name": "ReAct 循环（思考→行动→观察）",
+              "score": 80
+            },
+            {
+              "id": "tool-calling",
+              "name": "Tool Calling / Function Calling",
+              "score": 60
+            },
+            {
+              "id": "memory",
+              "name": "Memory 设计（短期/长期/持久化）",
+              "score": 40
+            },
+            {
+              "id": "multi-agent",
+              "name": "多 Agent 编排（Supervisor+Worker）",
+              "score": 40
+            },
+            {
+              "id": "langgraph",
+              "name": "LangGraph 有状态编排",
+              "score": 60
+            },
+            {
+              "id": "mcp",
+              "name": "MCP 协议",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "3.4 AI 工程保障",
+          "skills": [
+            {
+              "id": "ai-circuit-breaker",
+              "name": "AI 熔断降级（三道防线）",
+              "score": 60
+            },
+            {
+              "id": "cost-control",
+              "name": "成本控制（Token计量/语义缓存/模型路由）",
+              "score": 60
+            },
+            {
+              "id": "observability",
+              "name": "可观测性（LangFuse/调用链追踪）",
+              "score": 40
+            },
+            {
+              "id": "multi-tenant",
+              "name": "多租户隔离",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "3.5 AI 理论（面试八股）",
+          "skills": [
+            {
+              "id": "transformer",
+              "name": "Transformer 架构原理",
+              "score": 20
+            },
+            {
+              "id": "decoding",
+              "name": "解码策略（Top-K/Top-P/Temperature）",
+              "score": 20
+            },
+            {
+              "id": "finetune",
+              "name": "微调原理（LoRA/SFT/RLHF/DPO）",
+              "score": 20
+            },
+            {
+              "id": "prompt-eng",
+              "name": "Prompt Engineering",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "3.6 向量数据库",
+          "skills": [
+            {
+              "id": "milvus",
+              "name": "Milvus",
+              "score": 60
+            },
+            {
+              "id": "es-vector",
+              "name": "ES 向量检索",
+              "score": 80
+            },
+            {
+              "id": "pgvector-chroma",
+              "name": "Pgvector / Chroma",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "3.7 多模型集成",
+          "skills": [
+            {
+              "id": "model-api",
+              "name": "DeepSeek / Qwen / GPT API 对接",
+              "score": 80
+            },
+            {
+              "id": "model-router",
+              "name": "供应商抽象层 / 模型路由",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "3.8 模型即服务与多模态（大模型架构师）",
+          "skills": [
+            {
+              "id": "maas",
+              "name": "MaaS 模型即服务（vLLM/TGI 部署 + 模型路由）",
+              "score": 20,
+              "keywords": [
+                "MaaS",
+                "vLLM",
+                "TGI",
+                "SGLang",
+                "模型路由",
+                "负载均衡",
+                "多模型调度"
+              ]
+            },
+            {
+              "id": "multimodal",
+              "name": "多模态（视觉+语言融合）",
+              "score": 60,
+              "keywords": [
+                "多模态",
+                "VLM",
+                "CLIP",
+                "图像理解",
+                "OCR融合",
+                "视频理解"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "name": "全栈/架构能力",
+      "groups": [
+        {
+          "name": "4.1 架构设计",
+          "skills": [
+            {
+              "id": "distributed",
+              "name": "分布式系统设计",
+              "score": 80
+            },
+            {
+              "id": "microservice",
+              "name": "微服务架构设计",
+              "score": 20
+            },
+            {
+              "id": "ha-hc-scale",
+              "name": "高可用/高并发/可扩展方案",
+              "score": 20
+            },
+            {
+              "id": "ddd",
+              "name": "DDD 领域驱动设计",
+              "score": 40
+            },
+            {
+              "id": "arch-evolution",
+              "name": "系统架构演进与重构",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "4.2 全栈交付",
+          "skills": [
+            {
+              "id": "e2e-delivery",
+              "name": "端到端独立交付能力",
+              "score": 40
+            },
+            {
+              "id": "tech-selection",
+              "name": "技术选型有依据",
+              "score": 40
+            },
+            {
+              "id": "full-trace-debug",
+              "name": "全链路问题排查",
+              "score": 20
+            },
+            {
+              "id": "restful-api",
+              "name": "RESTful API 设计",
+              "score": 20
+            },
+            {
+              "id": "compose-deploy",
+              "name": "Docker Compose 全栈部署",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "4.3 生产级保障",
+          "skills": [
+            {
+              "id": "capacity-test",
+              "name": "压测与容量规划",
+              "score": 40
+            },
+            {
+              "id": "release-strategy",
+              "name": "灰度/蓝绿/金丝雀发布",
+              "score": 60
+            }
+          ]
+        },
+        {
+          "name": "4.4 分布式深度专题（架构师硬功夫）",
+          "skills": [
+            {
+              "id": "distributed-tx",
+              "name": "分布式事务（Seata AT/TCC/Saga 实战）",
+              "score": 20,
+              "keywords": [
+                "Seata",
+                "TCC",
+                "Saga",
+                "分布式事务",
+                "AT模式",
+                "最终一致"
+              ]
+            },
+            {
+              "id": "sharding",
+              "name": "分库分表（ShardingSphere）",
+              "score": 60,
+              "keywords": [
+                "ShardingSphere",
+                "分库分表",
+                "分片键",
+                "双写迁移"
+              ]
+            },
+            {
+              "id": "rate-limit",
+              "name": "限流熔断算法（令牌桶/漏桶/Sentinel 源码级）",
+              "score": 80,
+              "keywords": [
+                "令牌桶",
+                "漏桶",
+                "Sentinel",
+                "Hystrix",
+                "Resilience4j",
+                "熔断器",
+                "断路器"
+              ]
+            },
+            {
+              "id": "service-mesh",
+              "name": "服务网格 Service Mesh（Istio/Envoy）",
+              "score": 60,
+              "keywords": [
+                "Istio",
+                "Envoy",
+                "Linkerd",
+                "sidecar",
+                "xDS",
+                "服务网格"
+              ]
+            },
+            {
+              "id": "api-gateway",
+              "name": "API 网关深入（Gateway 二次开发/APISIX/Kong）",
+              "score": 20,
+              "keywords": [
+                "APISIX",
+                "Kong",
+                "Spring Cloud Gateway",
+                "GlobalFilter",
+                "限流",
+                "鉴权"
+              ]
+            },
+            {
+              "id": "disaster-recovery",
+              "name": "异地多活 / 同城双活容灾",
+              "score": 80,
+              "keywords": [
+                "异地多活",
+                "同城双活",
+                "两地三中心",
+                "单元化",
+                "容灾",
+                "RTO",
+                "RPO"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "4.5 架构师方法论与软实力（高端岗差异化）",
+          "skills": [
+            {
+              "id": "solution-arch",
+              "name": "解决方案架构 / 售前架构方法论",
+              "score": 40,
+              "keywords": [
+                "解决方案",
+                "售前架构",
+                "需求拆解",
+                "方案蓝图",
+                "POC",
+                "招投标技术"
+              ]
+            },
+            {
+              "id": "platform-arch",
+              "name": "中台架构（数据中台/业务中台）",
+              "score": 40,
+              "keywords": [
+                "数据中台",
+                "业务中台",
+                "中台架构",
+                "One Data",
+                "数据底座"
+              ]
+            },
+            {
+              "id": "perf-tuning",
+              "name": "系统性能调优体系（全链路）",
+              "score": 60,
+              "keywords": [
+                "全链路压测",
+                "性能调优",
+                "瓶颈定位",
+                "JVM调优",
+                "SQL优化",
+                "Arthas",
+                "异步"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python 能力",
+      "groups": [
+        {
+          "name": "5.1 Python 基础",
+          "skills": [
+            {
+              "id": "python-base",
+              "name": "Python 语言基础与进阶",
+              "score": 60
+            },
+            {
+              "id": "python-web",
+              "name": "Python Web 框架（FastAPI/Flask）",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "5.2 Python 工程化",
+          "skills": [
+            {
+              "id": "python-data",
+              "name": "数据处理（pandas/NumPy）",
+              "score": 80
+            },
+            {
+              "id": "python-async",
+              "name": "异步编程（asyncio/aiohttp）",
+              "score": 60
+            },
+            {
+              "id": "python-eng",
+              "name": "Python 工程化（poetry/venv/pytest）",
+              "score": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "name": "管理能力（技术总监/架构师岗）",
+      "groups": [
+        {
+          "name": "6.1 团队管理",
+          "skills": [
+            {
+              "id": "team-building",
+              "name": "团队搭建与梯队建设",
+              "score": 80
+            },
+            {
+              "id": "performance",
+              "name": "绩效管理（KPI/OKR）",
+              "score": 40
+            },
+            {
+              "id": "recruitment",
+              "name": "招聘与面试（结构化）",
+              "score": 80
+            },
+            {
+              "id": "retention",
+              "name": "人才培养与留人",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "6.2 技术战略与决策",
+          "skills": [
+            {
+              "id": "tech-strategy",
+              "name": "技术战略规划与路线图",
+              "score": 80
+            },
+            {
+              "id": "tech-decision",
+              "name": "技术选型与重大决策（ADR）",
+              "score": 60
+            },
+            {
+              "id": "tech-debt",
+              "name": "技术债管理与风险把控",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "6.3 研发体系与效能",
+          "skills": [
+            {
+              "id": "rd-process",
+              "name": "研发流程与规范建设",
+              "score": 40
+            },
+            {
+              "id": "rd-efficiency",
+              "name": "研发效能度量（DORA/业务指标）",
+              "score": 60
+            },
+            {
+              "id": "engineering",
+              "name": "工程化与质量体系",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "6.4 领导力与协作",
+          "skills": [
+            {
+              "id": "cross-team",
+              "name": "跨部门协作与向上管理",
+              "score": 80
+            },
+            {
+              "id": "org-design",
+              "name": "组织设计（管理幅度/层级）",
+              "score": 60
+            },
+            {
+              "id": "crisis",
+              "name": "危机处理与复杂决策",
+              "score": 20
+            },
+            {
+              "id": "business-sense",
+              "name": "商业思维与技术价值定位",
+              "score": 20
+            }
+          ]
+        },
+        {
+          "name": "6.5 管理 × AI（差异化）",
+          "skills": [
+            {
+              "id": "ai-strategy",
+              "name": "AI 落地路线图制定",
+              "score": 60
+            },
+            {
+              "id": "ai-governance",
+              "name": "AI 代码质量/安全/合规治理",
+              "score": 20
+            },
+            {
+              "id": "ai-org",
+              "name": "AI 时代团队转型与人效",
+              "score": 80
+            }
+          ]
+        },
+        {
+          "name": "6.6 政企/ToB 特色（济南方向）",
+          "skills": [
+            {
+              "id": "xinchuang",
+              "name": "信创/国产化适配（达梦/人大金仓/OceanBase）",
+              "score": 80
+            },
+            {
+              "id": "compliance",
+              "name": "等保 2.0 与数据安全合规",
+              "score": 60
+            },
+            {
+              "id": "tob-delivery",
+              "name": "ToB 交付与招投标管理",
+              "score": 40
+            }
+          ]
+        },
+        {
+          "name": "6.7 ToB 高端交付与解决方案（CTO/研发总监必备）",
+          "skills": [
+            {
+              "id": "solution-mgmt",
+              "name": "解决方案 / 售前方案能力（管理视角）",
+              "score": 40,
+              "keywords": [
+                "售前方案",
+                "解决方案",
+                "方案策划",
+                "客户需求转化",
+                "招投标"
+              ]
+            },
+            {
+              "id": "program-mgmt",
+              "name": "项目集管理 Program Management",
+              "score": 20,
+              "keywords": [
+                "Program",
+                "项目集",
+                "PMO",
+                "多项目协同",
+                "战略对齐",
+                "依赖管理"
+              ]
+            },
+            {
+              "id": "qa-system",
+              "name": "质量保障体系（QA / SonarQube / 测试金字塔）",
+              "score": 20,
+              "keywords": [
+                "QA",
+                "质量保障",
+                "SonarQube",
+                "自动化测试",
+                "测试金字塔",
+                "覆盖率",
+                "缺陷率"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "6.8 战略影响力与生态（CTO 差异化）",
+          "skills": [
+            {
+              "id": "tech-brand",
+              "name": "技术品牌建设（大会/开源/博客/雇主品牌）",
+              "score": 20,
+              "keywords": [
+                "技术品牌",
+                "技术大会",
+                "开源运营",
+                "技术博客",
+                "雇主品牌",
+                "影响力"
+              ]
+            },
+            {
+              "id": "industry-research",
+              "name": "产学研合作 / 政府项目申报",
+              "score": 60,
+              "keywords": [
+                "产学研",
+                "校企合作",
+                "政府项目",
+                "科技计划",
+                "课题申报",
+                "研发补助"
+              ]
+            },
+            {
+              "id": "compliance-deep",
+              "name": "安全合规深度（数据安全法/PIPL/网络安全法）",
+              "score": 40,
+              "keywords": [
+                "数据安全法",
+                "个人信息保护法",
+                "PIPL",
+                "网络安全法",
+                "等保2.0",
+                "数据出境"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "name": "技术总监（管理岗）",
+      "req": {
+        "management": 0.7,
+        "architecture": 0.6,
+        "ai": 0.45,
+        "backend": 0.45,
+        "frontend": 0.3
+      }
+    },
+    {
+      "name": "高级前端开发",
+      "req": {
+        "frontend": 0.72,
+        "architecture": 0.48
+      }
+    },
+    {
+      "name": "全栈开发",
+      "req": {
+        "frontend": 0.48,
+        "backend": 0.47,
+        "architecture": 0.6
+      }
+    },
+    {
+      "name": "AI 全栈开发",
+      "req": {
+        "ai": 0.6,
+        "frontend": 0.36,
+        "architecture": 0.48
+      }
+    },
+    {
+      "name": "AI 后端开发",
+      "req": {
+        "backend": 0.6,
+        "ai": 0.8,
+        "python": 0.4
+      }
+    },
+    {
+      "name": "AI 架构师",
+      "req": {
+        "backend": 0.8,
+        "ai": 0.8,
+        "architecture": 0.8
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "date": "2026-01-01",
+      "source": "init",
+      "scope": "全部",
+      "note": "初始化评分表，全部技能待评估",
+      "scores": {}
+    },
+    {
+      "date": "2026-01-03",
+      "source": "skill-test",
+      "scope": "后端",
+      "note": "首次后端测评",
+      "scores": {
+        "backend.java": {
+          "score": 40,
+          "note": "JVM 内存结构答对，GC 调优参数不熟"
+        },
+        "backend.mysql": {
+          "score": 40,
+          "note": "索引能用，B+树底层说不清"
+        }
+      }
+    },
+    {
+      "date": "2026-01-07",
+      "source": "study",
+      "scope": "后端",
+      "note": "学完 MySQL 索引与事务锁",
+      "scores": {
+        "backend.mysql": {
+          "score": 60,
+          "note": "B+树/隔离级别/锁机制可完整讲述"
+        },
+        "backend.redis": {
+          "score": 40,
+          "note": "缓存穿透/击穿/雪崩概念了解，未实操"
+        }
+      }
+    },
+    {
+      "date": "2026-01-10",
+      "source": "study",
+      "scope": "AI工程化",
+      "note": "学完 MCP 协议",
+      "scores": {
+        "ai.mcp": {
+          "score": 60,
+          "note": "MCP 三角色/传输/工具注册可讲述"
+        },
+        "ai.toolcalling": {
+          "score": 40,
+          "note": "Function Calling 流程了解，JSON Schema 细节不熟"
+        }
+      }
+    },
+    {
+      "date": "2026-01-15",
+      "source": "skill-test",
+      "scope": "全部",
+      "note": "全量测评示例（虚构数据）",
+      "scores": {
+        "frontend.html-css": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.js": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "frontend.ts": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.browser": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "frontend.network": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.dsa": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.vue3": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "frontend.react18": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.framework-principle": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.build-tool": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.css-solution": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.code-quality": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.cicd": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.load-perf": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.render-perf": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.monitor": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.miniprogram": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.h5-mobile": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.node-bff": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "frontend.micro-frontend": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.sse": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "frontend.streaming-md": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "frontend.multi-turn-state": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "frontend.toolcall-ui": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.java": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "backend.jvm": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.concurrency": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.dsa": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "backend.springboot": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "backend.springmvc": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "backend.spring-tx": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "backend.spring-security": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "backend.spring-cloud": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "backend.mysql": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "backend.redis": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.mq": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.es": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "backend.nginx": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.docker": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.linux": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "backend.k8s": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "backend.ops-monitor": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "backend.go": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.flink": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "backend.bigdata": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.spring-ai": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.langchain": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.dify-coze": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.rag-pipeline": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.chunking-strategy": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.retrieval-opt": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.prompt-token": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.rag-eval": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.react-loop": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.tool-calling": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.memory": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.multi-agent": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.langgraph": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.mcp": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.ai-circuit-breaker": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.cost-control": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.observability": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.multi-tenant": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.transformer": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.decoding": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.finetune": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.prompt-eng": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "ai.milvus": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "ai.es-vector": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.pgvector-chroma": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.model-api": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.model-router": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "ai.maas": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "ai.multimodal": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "architecture.distributed": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "architecture.microservice": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.ha-hc-scale": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.ddd": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.arch-evolution": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.e2e-delivery": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.tech-selection": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.full-trace-debug": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.restful-api": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.compose-deploy": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "architecture.capacity-test": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.release-strategy": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "architecture.distributed-tx": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.sharding": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "architecture.rate-limit": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "architecture.service-mesh": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "architecture.api-gateway": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "architecture.disaster-recovery": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "architecture.solution-arch": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.platform-arch": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "architecture.perf-tuning": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "python.python-base": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "python.python-web": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "python.python-data": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "python.python-async": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "python.python-eng": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.team-building": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.performance": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "management.recruitment": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.retention": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "management.tech-strategy": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.tech-decision": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.tech-debt": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.rd-process": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "management.rd-efficiency": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.engineering": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.cross-team": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.org-design": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.crisis": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.business-sense": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.ai-strategy": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.ai-governance": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.ai-org": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.xinchuang": {
+          "score": 80,
+          "note": "示例评分"
+        },
+        "management.compliance": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.tob-delivery": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "management.solution-mgmt": {
+          "score": 40,
+          "note": "示例评分"
+        },
+        "management.program-mgmt": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.qa-system": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.tech-brand": {
+          "score": 20,
+          "note": "示例评分"
+        },
+        "management.industry-research": {
+          "score": 60,
+          "note": "示例评分"
+        },
+        "management.compliance-deep": {
+          "score": 40,
+          "note": "示例评分"
+        }
+      }
+    }
+  ]
+}

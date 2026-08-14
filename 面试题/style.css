@@ -1,0 +1,219 @@
+/* ============================================
+   面试题 PDF 样式 — 学习友好排版
+   说明：md2pdf 先加载 cv/style.css 再加载本文件，
+        本文件在后，覆盖同名通用标签规则。
+   设计：模块标题蓝底白字 / 题目左边框 / 答案引用绿底 /
+        代码块深色底 / 表格表头蓝底 / 适当留白方便阅读
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+  margin: 16mm 15mm 18mm 15mm;
+}
+
+body {
+  font-family: "AlibabaPuHuiTi", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.75;
+  color: #2c3338;
+  background: #fff;
+}
+
+/* ========== 文档主标题（# ） ========== */
+h1 {
+  font-size: 20pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0 0 6px 0;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #1677ff;
+  letter-spacing: 0.5px;
+}
+
+/* ========== 模块标题（## 一、二、...） ========== */
+h2 {
+  font-size: 15pt;
+  font-weight: 700;
+  color: #fff;
+  background: #1677ff;
+  padding: 6px 12px;
+  margin: 20px 0 10px 0;
+  border-radius: 3px;
+  page-break-after: avoid;
+}
+
+/* ========== 题目标题（### Qn.） ========== */
+h3 {
+  font-size: 12.5pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 16px 0 5px 0;
+  padding: 3px 0 3px 9px;
+  border-left: 5px solid #1677ff;
+  background: #f0f6ff;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #1677ff;
+  margin: 11px 0 3px 0;
+  page-break-after: avoid;
+}
+
+h5 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #444;
+  margin: 7px 0 2px 0;
+}
+
+/* ========== 段落 ========== */
+p {
+  font-size: 10.5pt;
+  color: #2c3338;
+  line-height: 1.75;
+  margin-bottom: 5px;
+}
+
+strong {
+  font-weight: 700;
+  color: #c0392b;
+}
+
+em {
+  font-style: normal;
+  color: #1677ff;
+  font-weight: 600;
+}
+
+del {
+  color: #999;
+}
+
+/* ========== 代码 ========== */
+code {
+  font-family: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+  font-size: 9.5pt;
+  background: #f4f6f8;
+  color: #c7254e;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+pre {
+  background: #283447;
+  color: #e6e6e6;
+  padding: 11px 13px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 7px 0 9px 0;
+  line-height: 1.55;
+  font-size: 9.3pt;
+  font-family: "Cascadia Code", "JetBrains Mono", Consolas, "Source Code Pro", "DejaVu Sans Mono", "Courier New", monospace;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 9.3pt;
+}
+
+/* ========== 引用（考察标签 / 答案高亮） ========== */
+blockquote {
+  border-left: 4px solid #52c41a;
+  background: #f6ffed;
+  padding: 6px 12px;
+  margin: 6px 0;
+  color: #2a3a1a;
+  font-size: 10pt;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ========== 表格 ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 7px 0 11px 0;
+  font-size: 9.8pt;
+  page-break-inside: avoid;
+}
+
+th, td {
+  border: 1px solid #d9d9d9;
+  padding: 5px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: #1677ff;
+  color: #fff;
+  font-weight: 700;
+}
+
+tr:nth-child(even) td {
+  background: #f7f9fc;
+}
+
+/* ========== 列表 ========== */
+ul {
+  margin: 4px 0 7px 22px;
+  list-style: disc;
+}
+
+ol {
+  margin: 4px 0 7px 22px;
+}
+
+li {
+  font-size: 10.5pt;
+  line-height: 1.75;
+  margin-bottom: 2px;
+  color: #2c3338;
+}
+
+li strong {
+  color: #c0392b;
+}
+
+/* ========== 水平线 ========== */
+hr {
+  border: none;
+  border-top: 1px dashed #bbb;
+  margin: 16px 0;
+}
+
+/* ========== 链接 ========== */
+a {
+  color: #1677ff;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ========== 打印优化 ========== */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+  pre, table {
+    page-break-inside: avoid;
+  }
+}
