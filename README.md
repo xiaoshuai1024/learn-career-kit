@@ -75,7 +75,7 @@ make gap              # → 与目标岗位的差距矩阵
 
 ## OpenSpec 变更管理
 
-项目使用 [OpenSpec](https://openspec.dev) 管理规格与变更：基线能力以 spec 形式登记在 `openspec/specs/`，改动走 `/opsx:propose → apply → archive` 流程（见 `.claude/commands/opsx/`）。
+项目使用 [OpenSpec](https://openspec.dev) 管理规格与变更：三大核心能力（`skill-assessment` 能力评估 / `study-workflow` 学习与沉淀 / `md-pdf-toolchain` 转换工具链）的行为契约登记在 `openspec/specs/`，改动走 `/opsx:propose → apply → archive` 流程（见 `.claude/commands/opsx/`）。
 
 ## 目录导航
 

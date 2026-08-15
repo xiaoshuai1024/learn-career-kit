@@ -1,15 +1,14 @@
+# md-pdf-toolchain Specification
+
 ## Purpose
-
 Markdown/PDF 文档转换工具链：面向中文学习资料的精美排版导出（md→PDF）、目录批量导出与反向转换（PDF→md），供简历、教材、面试题等文档使用。
-
-## ADDED Requirements
-
+## Requirements
 ### Requirement: 单文件 md 转 PDF
-`scripts/md2pdf.mjs` 接收一个 Markdown 文件，按 `assets/style.css` 样式渲染并导出 PDF，默认在文件名后附加日期；支持 `-o` 指定输出路径与 `--no-header` 去页眉；支持 `--style` 覆盖样式表。
+`scripts/md2pdf.mjs` 接收一个 Markdown 文件，按 `assets/style.css` 样式渲染并导出同名 `.pdf`（默认输出到源文件同目录，可用 `-o` 指定输出路径）；支持 `--no-header` 去页眉与 `--style` 覆盖样式表。
 
 #### Scenario: 默认导出
 - **WHEN** 运行 `make md2pdf f=docs/某教材.md`
-- **THEN** 生成带日期后缀的 PDF，版式来自 `assets/style.css`
+- **THEN** 生成 `docs/某教材.pdf`，版式来自 `assets/style.css`
 
 ### Requirement: 字体可选回退
 内联字体为可选依赖：`assets/fonts/` 下存在指定 TTF 时以 base64 内联嵌入 PDF；缺失时自动回退系统字体（PingFang SC / 微软雅黑），转换不失败且日志明示回退原因。
@@ -31,3 +30,4 @@ Markdown/PDF 文档转换工具链：面向中文学习资料的精美排版导�
 #### Scenario: 反向转换
 - **WHEN** 运行 `make pdf2md f=资料.pdf`
 - **THEN** 同目录生成 `资料.md`，文本与结构按 PyMuPDF 提取保真
+
