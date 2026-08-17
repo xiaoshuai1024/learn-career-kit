@@ -28,7 +28,7 @@
 不需要手动 clone。在你的 Agent（Claude Code / Codex 等，支持 `AGENTS.md` 和执行 shell 的工具）里发这一句话，它会完成全部工作：
 
 ```text
-帮我把 https://github.com/xiaoshuai1024/learn-career-kit clone 到本地并完成初始化：
+帮我把 https://github.com/<你的用户名>/learn-career-kit clone 到本地并完成初始化：
 先读根目录的 AGENTS.md 和 docs/SPEC.md 理解项目结构，安装依赖，把 docs/templates/ 下的示例
 工作文件复制到 docs/，把 docs/能力评估数据.json 中的张三示例数据替换为我的信息（待会儿我口述），
 配置岗位爬虫 MCP（job-crawler/，配置前先向我展示它的免责声明并等我确认），最后跑一遍 make report
@@ -78,7 +78,7 @@ bash scripts/launch-chrome.sh     # 启动调试浏览器，手动登录目标�
 ## 手动安装（不用 Agent 也可跑）
 
 ```bash
-git clone https://github.com/xiaoshuai1024/learn-career-kit
+git clone https://github.com/<你的用户名>/learn-career-kit
 cd learn-career-kit
 pnpm install          # 安装依赖（puppeteer）
 
