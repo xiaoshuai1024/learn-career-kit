@@ -109,7 +109,7 @@ make info                       # 查看环境信息
 
 ## 岗位爬虫 MCP（job-crawler/）
 
-只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job + 海尔/海信/浪潮/特来电官网），CDP 接管用户手动登录的浏览器，内置七层防风控。抓取结果写回 `docs/岗位列表.md`（文件不存在时自动从 `docs/templates/岗位列表.example.md` 初始化）。
+只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job 四大平台），CDP 接管用户手动登录的浏览器，内置七层防风控。抓取结果写回 `docs/岗位列表.md`（文件不存在时自动从 `docs/templates/岗位列表.example.md` 初始化）。
 
 - 工具：`check_status` / `search_jobs({keyword,city,limit})` / `get_job_detail({jobUrl})` / `export_to_md({direction})`
 - 防风控参数：`job-crawler/config/safety.json`（调频率只动它）

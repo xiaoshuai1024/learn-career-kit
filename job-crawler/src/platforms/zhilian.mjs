@@ -8,7 +8,7 @@
 export default {
   id: 'zhilian',
   label: '智联招聘',
-  sectionTitle: '## 七、智联招聘',
+  sectionTitle: '## 四、智联招聘',
   directionSection: {
     // 智联段当前只有一个合并子分区
     前端: '### 前端/全栈开发',

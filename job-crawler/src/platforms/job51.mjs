@@ -13,7 +13,7 @@
 export default {
   id: 'job51',
   label: '前程无忧',
-  sectionTitle: '## 六、51Job（前程无忧）',
+  sectionTitle: '## 三、51Job（前程无忧）',
   directionSection: {
     前端: '### 前端/全栈开发',
     后端: '### 前端/全栈开发',

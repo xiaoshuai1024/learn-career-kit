@@ -1,6 +1,6 @@
 # job-crawler — 多平台只读岗位爬虫 MCP Server
 
-只读的多平台招聘岗位采集工具，以 MCP（Model Context Protocol，模型上下文协议）server 形式接入你的 AI agent（Codex / Claude Code / ZCode 等）。支持 BOSS直聘、猎聘、智联招聘、51Job 及海尔/海信/浪潮/特来电官网。采用 CDP（Chrome DevTools Protocol）接管**你手动登录**的浏览器，内置七层防风控。
+只读的多平台招聘岗位采集工具，以 MCP（Model Context Protocol，模型上下文协议）server 形式接入你的 AI agent（Codex / Claude Code / ZCode 等）。支持 BOSS直聘、猎聘、智联招聘、51Job 四大平台。采用 CDP（Chrome DevTools Protocol）接管**你手动登录**的浏览器，内置七层防风控。
 
 > ⚠️ **本项目不提供也不绕过任何登录能力**：所有平台均需你自己手动登录，工具只读取已登录会话中的公开页面数据。
 
@@ -99,7 +99,7 @@ check_status 看下登录态
 src/
   index.mjs            MCP server 入口（注册 4 工具）
   browser.mjs          CDP 连接接管
-  platforms/           8 个平台适配器（boss/liepin/zhilian/job51/haier/hisense/inspur/teld）
+  platforms/           4 个平台适配器（boss/liepin/zhilian/job51）
   safety/              七层防风控（throttle/circuit-breaker/humanize/audit-log/guard/state-io）
   tools/               4 个 MCP 工具实现
   writer.mjs           写回 docs/岗位列表.md（两层去重 + 模板初始化）

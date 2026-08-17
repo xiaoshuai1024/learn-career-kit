@@ -23,10 +23,62 @@
 4. **知识沉淀**：生词本 / 错题本 / 学习记录 / 每日日志 / 技术清单，各有唯一职责边界
 5. **再评估**：评分快照累积成趋势，HTML 雷达图 + CSV 看进步
 
-## 快速上手
+## 一句话初始化（推荐）
+
+不需要手动 clone。在你的 Agent（Claude Code / Codex 等，支持 `AGENTS.md` 和执行 shell 的工具）里发这一句话，它会完成全部工作：
+
+```text
+帮我把 https://github.com/xiaoshuai1024/learn-career-kit clone 到本地并完成初始化：
+先读根目录的 AGENTS.md 和 docs/SPEC.md 理解项目结构，安装依赖，把 docs/templates/ 下的示例
+工作文件复制到 docs/，把 docs/能力评估数据.json 中的张三示例数据替换为我的信息（待会儿我口述），
+配置岗位爬虫 MCP（job-crawler/，配置前先向我展示它的免责声明并等我确认），最后跑一遍 make report
+验证闭环可用，并告诉我接下来说什么来启动第一次能力评估。
+```
+
+## 自然语言用法（不用记命令）
+
+初始化之后，直接说人话就行——Agent 会根据意图自动加载对应的命令或 skill：
+
+| 你说 | Agent 会做什么 |
+|------|----------------|
+| 「我后端比较薄弱，帮我学一个最需要补的点」 | 等价 `/study`：读评分数据找薄弱项 → 输出完整学习材料 → 测验 → 模拟面试 → 更新评分 |
+| 「给我讲讲分布式事务，讲到位一点」 | 等价 `/study 分布式事务`：按 AGENTS.md 的学习材料粒度规范（先讲解→后追问、ASCII 图、真实业务场景）输出 |
+| 「测一下我的前端水平怎么样」 | 等价 `/skill-test 前端`：2-3 题/技能由浅入深 → 打分 → 追加快照 → 刷新雷达图 |
+| 「复习一下最近学的东西」 | 等价 `/study review`：间隔重复，从错题本/学习记录取最近薄弱点 |
+| 「我准备投架构师岗，帮我看看差距」 | 跑 `make gap` 输出岗位差距矩阵，给出补齐优先级 |
+| 「帮我改改这段自我介绍，AI 味太重了」 | 自动触发 `writing-style-zh` / `avoid-ai-writing` skill |
+| 「搜一下青岛的前端岗位，抓 5 条看看」 | 调 job-crawler MCP：`search_jobs` → 汇报结果 → 确认后 `export_to_md` 写回岗位列表 |
+
+> Agent 工具需启用 skill 自动发现（如 Claude Code 的 skills 目录加载）。命令注册在 `.claude/commands/`，skills 在 `.agents/skills/`。
+
+## Skills
+
+`.agents/skills/` 内置通用写作技能（均可被 Agent 自动触发）：
+
+| Skill | 用途 |
+|-------|------|
+| `avoid-ai-writing` | 审计并改写内容，去除 AI 写作痕迹 |
+| `writing-style-zh` | 中文叙事场景（简历/面试话术/技术博客）去 AI 味 |
+| `detect-ai` | 检测文本是否为 AI 生成，给出评分与指标 |
+
+## 岗位爬虫（job-crawler）
+
+`job-crawler/` 是只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job 四大平台），CDP 接管你手动登录的浏览器，内置七层防风控，抓取结果自动写回 `docs/岗位列表.md`（两层去重）。它补全了闭环的输入端：**市场岗位 → 能力差距 → 学习选题**。
+
+> ⚠️ **免责声明**：仅供个人学习与求职研究，严禁商业用途/数据倒卖/批量爬取；遵守各平台服务条款与当地法律；只读不投递、验证码绝不破解；账号风控与法律风险由使用者自行承担。完整条款见 [`job-crawler/README.md`](job-crawler/README.md)。使用前请务必阅读。
+
+快速接入：
 
 ```bash
-git clone <你的 fork>
+cd job-crawler && pnpm install
+bash scripts/launch-chrome.sh     # 启动调试浏览器，手动登录目标平台（建议小号）
+# 然后在 Agent 的 MCP 配置注册 node job-crawler/src/index.mjs
+```
+
+## 手动安装（不用 Agent 也可跑）
+
+```bash
+git clone https://github.com/xiaoshuai1024/learn-career-kit
 cd learn-career-kit
 pnpm install          # 安装依赖（puppeteer）
 
@@ -39,28 +91,9 @@ cp docs/templates/*.md docs/
 # 3. 生成能力报告
 make report           # → docs/个人能力评分表.md + 能力评估报告.html + 能力评估趋势.csv
 make gap              # → 与目标岗位的差距矩阵
-
-# 4. 用 AI Agent 学习（Claude Code / Codex 等）
-#    /study            自动从薄弱项选题学习
-#    /study MCP协议     学习指定主题
-#    /study review     间隔重复复习
-#    /skill-test 后端   测试某方向能力并追加快照
 ```
 
 浏览器打开 `docs/能力评估报告.html` 查看雷达图 + 进步趋势折线。
-
-## 一句话让 Agent 初始化本项目
-
-把仓库 clone 到本地后，在你的 Agent（Claude Code / Codex 等，支持 `AGENTS.md` 的工具）里发这一句话即可：
-
-```text
-我已经把 learn-career-kit 这个学习闭环框架 clone 到本地了，请先读根目录的 AGENTS.md 和 docs/SPEC.md 理解项目结构，
-然后帮我完成初始化：把 docs/templates/ 下的示例工作文件复制到 docs/，把 docs/能力评估数据.json 中的张三示例数据
-替换为我的信息（待会儿我会口述），配置好岗位爬虫 MCP（job-crawler/，含免责声明确认），最后跑一遍 make report
-验证闭环可用，并告诉我接下来该说什么来启动第一次能力评估。
-```
-
-> 也可以直接引用仓库根目录的 [`INIT_PROMPT.md`](INIT_PROMPT.md)（内容相同，便于复制）。
 
 ## 核心命令
 
@@ -75,52 +108,6 @@ make gap              # → 与目标岗位的差距矩阵
 
 两个命令完成后都会自动：追加快照 → 重跑报告脚本 → 归档错题（score ≤ 40 强制归档）→ 更新学习记录/清单/生词本。
 
-## 自然语言用法（不用记命令）
-
-Agent 会根据意图自动加载对应的命令或 skill，直接说人话就行：
-
-| 你说 | Agent 会做什么 |
-|------|----------------|
-| 「我后端比较薄弱，帮我学一个最需要补的点」 | 等价 `/study`：读评分数据找薄弱项 → 输出完整学习材料 → 测验 → 模拟面试 → 更新评分 |
-| 「给我讲讲分布式事务，讲到位一点」 | 等价 `/study 分布式事务`：按 AGENTS.md 的学习材料粒度规范（先讲解→后追问、ASCII 图、真实业务场景）输出 |
-| 「测一下我的前端水平怎么样」 | 等价 `/skill-test 前端`：2-3 题/技能由浅入深 → 打分 → 追加快照 → 刷新雷达图 |
-| 「复习一下最近学的东西」 | 等价 `/study review`：间隔重复，从错题本/学习记录取最近薄弱点 |
-| 「我准备投架构师岗，帮我看看差距」 | 跑 `make gap` 输出岗位差距矩阵，给出补齐优先级 |
-| 「帮我改改这段自我介绍，AI 味太重了」 | 自动触发 `writing-style-zh` / `avoid-ai-writing` skill |
-| 「帮我审一下这个技术方案，往死里问」 | 自动触发 `grill-me` skill |
-| 「搜一下青岛的前端岗位，抓 5 条看看」 | 调 job-crawler MCP：`search_jobs` → 汇报结果 → 确认后 `export_to_md` 写回岗位列表 |
-
-> Agent 工具需启用 skill 自动发现（如 Claude Code 的 skills 目录加载）。命令注册在 `.claude/commands/`，skills 在 `.agents/skills/`。
-
-## Skills
-
-`.agents/skills/` 内置通用写作与思辨技能（均可被 Agent 自动触发）：
-
-| Skill | 用途 |
-|-------|------|
-| `grill-me` | 对方案/设计进行高强度连环追问，检验思考漏洞 |
-| `avoid-ai-writing` | 审计并改写内容，去除 AI 写作痕迹 |
-| `writing-style-zh` | 中文叙事场景（简历/面试话术/技术博客）去 AI 味 |
-| `detect-ai` | 检测文本是否为 AI 生成，给出评分与指标 |
-
-## 岗位爬虫（job-crawler）
-
-`job-crawler/` 是只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job + 海尔/海信/浪潮/特来电官网），CDP 接管你手动登录的浏览器，内置七层防风控，抓取结果自动写回 `docs/岗位列表.md`（两层去重）。它补全了闭环的输入端：**市场岗位 → 能力差距 → 学习选题**。
-
-> ⚠️ **免责声明**：仅供个人学习与求职研究，严禁商业用途/数据倒卖/批量爬取；遵守各平台服务条款与当地法律；只读不投递、验证码绝不破解；账号风控与法律风险由使用者自行承担。完整条款见 [`job-crawler/README.md`](job-crawler/README.md)。使用前请务必阅读。
-
-快速接入：
-
-```bash
-cd job-crawler && pnpm install
-bash scripts/launch-chrome.sh     # 启动调试浏览器，手动登录目标平台（建议小号）
-# 然后在 Agent 的 MCP 配置注册 node job-crawler/src/index.mjs
-```
-
-## OpenSpec 变更管理
-
-项目使用 [OpenSpec](https://openspec.dev) 管理规格与变更：三大核心能力（`skill-assessment` 能力评估 / `study-workflow` 学习与沉淀 / `md-pdf-toolchain` 转换工具链）的行为契约登记在 `openspec/specs/`，改动走 `/opsx:propose → apply → archive` 流程（见 `.claude/commands/opsx/`）。
-
 ## 目录导航
 
 | 内容 | 位置 |
@@ -134,6 +121,7 @@ bash scripts/launch-chrome.sh     # 启动调试浏览器，手动登录目标�
 | 工作文件模板 | `docs/templates/` |
 | 报告/转换脚本 | `scripts/` |
 | 岗位爬虫 MCP（含免责声明） | `job-crawler/` |
+| 变更规格（OpenSpec 工具内置） | `openspec/` |
 
 ## 工具链
 

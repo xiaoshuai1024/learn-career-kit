@@ -4,26 +4,18 @@
  * 加新平台:在此 import 并加入 REGISTRY 即可。guard/throttle/check_status 通过
  * allDomains()/allAdapters() 自动跟随,无需改它们。
  *
- * 阶段1 只注册 boss;阶段2-4 加 job51/zhilian/liepin。
+ * 支持 BOSS直聘/猎聘/智联/51Job 四大平台。
  */
 import boss from './boss.mjs';
 import job51 from './job51.mjs';
 import zhilian from './zhilian.mjs';
 import liepin from './liepin.mjs';
-import teld from './teld.mjs';
-import inspur from './inspur.mjs';
-import hisense from './hisense.mjs';
-import haier from './haier.mjs';
 
 const REGISTRY = {
   boss,
   job51,
   zhilian,
   liepin,
-  teld,
-  inspur,
-  hisense,
-  haier,
 };
 
 /** 取 adapter(未知 id 返回 undefined) */
