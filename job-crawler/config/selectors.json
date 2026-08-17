@@ -1,0 +1,22 @@
+{
+  "_comment": "BOSS 直聘 DOM 选择器映射。每个字段主+备选,改版只改这里。BOSS 列表页 zhipin.com/web/geek/job。",
+  "list": {
+    "container": [".job-list-box", ".search-job-result", "[class*=job-list]"],
+    "card": [".job-card-wrapper", ".job-card-left", "[class*=job-card]"]
+  },
+  "card": {
+    "company": [".company-name a", ".company-name", "[class*=company-name]"],
+    "title": [".job-name", ".job-title", "[class*=job-name]"],
+    "salary": [".salary", ".red", "[class*=salary]"],
+    "area": [".job-area", "[class*=job-area]", ".company-info-list"],
+    "jobUrl": ["a[href*='/job_detail/']", "a[href*='/zhaopin/']", "a[href*='zhipin.com']"],
+    "skills": [".tag-list li", ".job-tags span", "[class*=tag-list] span"],
+    "companyTag": [".company-info", ".company-text", "[class*=company-info]"]
+  },
+  "detail": {
+    "jd": [".job-sec-text", ".job-detail", "[class*=job-sec-text]"],
+    "companyFull": [".company-info .name", ".sensitive-company-name", "[class*=company-name]"],
+    "bossActive": [".boss-active-tag", "[class*=boss-active]"],
+    "skills": [".job-tags .tag-list li", ".job-detail-section .tag-list span"]
+  }
+}

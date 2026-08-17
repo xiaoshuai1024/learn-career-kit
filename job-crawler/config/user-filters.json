@@ -1,0 +1,9 @@
+{
+  "_comment": "用户过滤条件持久化 —— 下次进入系统仍生效",
+  "minExperienceYears": 5,
+  "minCompanySize": 100,
+  "minSalary": 12000,
+  "titleBlacklist": ["初级", "初中级", "助理", "实习生", "实习", "应届", "在校生"],
+  "companySizeBlacklist": ["少于50人", "少于100人", "20-99人", "0-20人"],
+  "updatedAt": "2026-06-28T11:00:00+08:00"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "job-crawler",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "多平台只读岗位爬虫 MCP server — 支持 BOSS直聘/前程无忧/智联招聘/猎聘,CDP 接管已登录浏览器,内置七层防风控",
+  "bin": {
+    "job-crawler": "src/index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.mjs"
+  }
+}

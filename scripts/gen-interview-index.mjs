@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * gen-interview-index.mjs
- * 生成「面试题/高频刷题清单.md」—— 按 方向 → 子分类 → 热度 排序的刷题索引
+ * 生成「interview-questions/高频刷题清单.md」—— 按 方向 → 子分类 → 热度 排序的刷题索引
  *
  * 数据来源：
  *   - 题目：抽取 4 份保留面试题（架构师/技术总监/AI全栈/前端架构师）的 ### Q 题
@@ -15,11 +15,11 @@
 import fs from 'fs';
 
 const FILES = {
-  '架构师': '面试题/md/架构师-全面面试题集.md',
-  '技术总监': '面试题/md/技术总监-面试题.md',
-  'AI应用开发': '面试题/md/AI应用开发-全面面试题集.md',
-  'AI全栈': '面试题/md/全栈技术总监-AI应用开发-综合面试题.md',
-  '前端架构师': '面试题/md/前端架构师-面试题.md',
+  '架构师': 'interview-questions/md/架构师-全面面试题集.md',
+  '技术总监': 'interview-questions/md/技术总监-面试题.md',
+  'AI应用开发': 'interview-questions/md/AI应用开发-全面面试题集.md',
+  'AI全栈': 'interview-questions/md/全栈技术总监-AI应用开发-综合面试题.md',
+  '前端架构师': 'interview-questions/md/前端架构师-面试题.md',
 };
 
 // ── 抽取题目 ──────────────────────────────────────────
@@ -200,7 +200,7 @@ const heatMark = { 3: '🔥🔥🔥', 2: '🔥🔥', 1: '🔥' };
 const heatLabel = { 3: '必刷高频', 2: '中频常考', 1: '低频加分' };
 
 function shortFile(f) {
-  return f.replace('面试题/md/', '').replace('.md', '');
+  return f.replace('interview-questions/md/', '').replace('.md', '');
 }
 
 let md = `# 📋 高频刷题清单（按 方向 → 子分类 → 热度 排序）
@@ -254,7 +254,7 @@ for (const dir of Object.keys(FILES)) {
   md += `---\n\n`;
 }
 
-fs.writeFileSync('面试题/高频刷题清单.md', md, 'utf-8');
-console.log('✅ 已生成 面试题/高频刷题清单.md');
+fs.writeFileSync('interview-questions/高频刷题清单.md', md, 'utf-8');
+console.log('✅ 已生成 interview-questions/高频刷题清单.md');
 console.log(`   共 ${qs.length} 题 | 🔥🔥🔥 ${qs.filter(q=>q.heat===3).length} | 🔥🔥 ${qs.filter(q=>q.heat===2).length} | 🔥 ${qs.filter(q=>q.heat===1).length}`);
 if (unclassified.length) console.error(`   ⚠️ ${unclassified.length} 题未分类，请检查`);

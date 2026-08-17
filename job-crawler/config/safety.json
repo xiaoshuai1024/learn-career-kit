@@ -1,0 +1,18 @@
+{
+  "_comment": "防风控参数集中配置。改频率/上限/冷却只动这里。域名白名单已迁至各 adapter.domains(由 guard.mjs 汇总),不再在此配置。保守优先。",
+  "minGapMs": 3000,
+  "maxGapMs": 8000,
+  "batchSize": 10,
+  "batchCooldownMs": [30000, 90000],
+  "sessionLimit": 500,
+  "dailyCap": 500,
+  "activeHours": [6, 23],
+  "detailMinStayMs": [2000, 4000],
+  "readSpeedCps": 8,
+  "hesitationChance": 0.05,
+  "hesitationMs": [5000, 15000],
+  "scrollDeltaY": [600, 1500],
+  "scrollSettleMs": [800, 2000],
+  "extractFailThreshold": 0.5,
+  "firstRunLimit": 5
+}

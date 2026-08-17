@@ -31,6 +31,10 @@
 | `/skill-test [方向\|技能]` | 技能测试评估，追加评分快照并重跑报告脚本 |
 | `/opsx:propose` 等 | OpenSpec 变更管理（见 `.claude/commands/opsx/`） |
 
+## 岗位爬虫 MCP（job-crawler/）
+
+只读多平台岗位采集（BOSS/猎聘/智联/51Job + 官网），写回 `docs/岗位列表.md`。**配置前必须让用户确认 `job-crawler/README.md` 的免责声明**。红线：只读不投递、验证码绝不破解、建议小号。
+
 ## 硬规则速记（详见 AGENTS.md）
 
 - **评分数字只写 `docs/能力评估数据.json`**（snapshots 数组）；评分表/HTML/CSV 全是脚本生成，勿手改

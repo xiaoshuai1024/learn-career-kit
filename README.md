@@ -49,6 +49,19 @@ make gap              # → 与目标岗位的差距矩阵
 
 浏览器打开 `docs/能力评估报告.html` 查看雷达图 + 进步趋势折线。
 
+## 一句话让 Agent 初始化本项目
+
+把仓库 clone 到本地后，在你的 Agent（Claude Code / Codex 等，支持 `AGENTS.md` 的工具）里发这一句话即可：
+
+```text
+我已经把 learn-career-kit 这个学习闭环框架 clone 到本地了，请先读根目录的 AGENTS.md 和 docs/SPEC.md 理解项目结构，
+然后帮我完成初始化：把 docs/templates/ 下的示例工作文件复制到 docs/，把 docs/能力评估数据.json 中的张三示例数据
+替换为我的信息（待会儿我会口述），配置好岗位爬虫 MCP（job-crawler/，含免责声明确认），最后跑一遍 make report
+验证闭环可用，并告诉我接下来该说什么来启动第一次能力评估。
+```
+
+> 也可以直接引用仓库根目录的 [`INIT_PROMPT.md`](INIT_PROMPT.md)（内容相同，便于复制）。
+
 ## 核心命令
 
 | 命令 | 说明 |
@@ -62,6 +75,23 @@ make gap              # → 与目标岗位的差距矩阵
 
 两个命令完成后都会自动：追加快照 → 重跑报告脚本 → 归档错题（score ≤ 40 强制归档）→ 更新学习记录/清单/生词本。
 
+## 自然语言用法（不用记命令）
+
+Agent 会根据意图自动加载对应的命令或 skill，直接说人话就行：
+
+| 你说 | Agent 会做什么 |
+|------|----------------|
+| 「我后端比较薄弱，帮我学一个最需要补的点」 | 等价 `/study`：读评分数据找薄弱项 → 输出完整学习材料 → 测验 → 模拟面试 → 更新评分 |
+| 「给我讲讲分布式事务，讲到位一点」 | 等价 `/study 分布式事务`：按 AGENTS.md 的学习材料粒度规范（先讲解→后追问、ASCII 图、真实业务场景）输出 |
+| 「测一下我的前端水平怎么样」 | 等价 `/skill-test 前端`：2-3 题/技能由浅入深 → 打分 → 追加快照 → 刷新雷达图 |
+| 「复习一下最近学的东西」 | 等价 `/study review`：间隔重复，从错题本/学习记录取最近薄弱点 |
+| 「我准备投架构师岗，帮我看看差距」 | 跑 `make gap` 输出岗位差距矩阵，给出补齐优先级 |
+| 「帮我改改这段自我介绍，AI 味太重了」 | 自动触发 `writing-style-zh` / `avoid-ai-writing` skill |
+| 「帮我审一下这个技术方案，往死里问」 | 自动触发 `grill-me` skill |
+| 「搜一下青岛的前端岗位，抓 5 条看看」 | 调 job-crawler MCP：`search_jobs` → 汇报结果 → 确认后 `export_to_md` 写回岗位列表 |
+
+> Agent 工具需启用 skill 自动发现（如 Claude Code 的 skills 目录加载）。命令注册在 `.claude/commands/`，skills 在 `.agents/skills/`。
+
 ## Skills
 
 `.agents/skills/` 内置通用写作与思辨技能（均可被 Agent 自动触发）：
@@ -72,6 +102,20 @@ make gap              # → 与目标岗位的差距矩阵
 | `avoid-ai-writing` | 审计并改写内容，去除 AI 写作痕迹 |
 | `writing-style-zh` | 中文叙事场景（简历/面试话术/技术博客）去 AI 味 |
 | `detect-ai` | 检测文本是否为 AI 生成，给出评分与指标 |
+
+## 岗位爬虫（job-crawler）
+
+`job-crawler/` 是只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job + 海尔/海信/浪潮/特来电官网），CDP 接管你手动登录的浏览器，内置七层防风控，抓取结果自动写回 `docs/岗位列表.md`（两层去重）。它补全了闭环的输入端：**市场岗位 → 能力差距 → 学习选题**。
+
+> ⚠️ **免责声明**：仅供个人学习与求职研究，严禁商业用途/数据倒卖/批量爬取；遵守各平台服务条款与当地法律；只读不投递、验证码绝不破解；账号风控与法律风险由使用者自行承担。完整条款见 [`job-crawler/README.md`](job-crawler/README.md)。使用前请务必阅读。
+
+快速接入：
+
+```bash
+cd job-crawler && pnpm install
+bash scripts/launch-chrome.sh     # 启动调试浏览器，手动登录目标平台（建议小号）
+# 然后在 Agent 的 MCP 配置注册 node job-crawler/src/index.mjs
+```
 
 ## OpenSpec 变更管理
 
@@ -85,16 +129,17 @@ make gap              # → 与目标岗位的差距矩阵
 | 岗位能力标准（主骨架） | `docs/岗位能力图谱-严格版.md` |
 | 前端/后端深度教材 | `docs/前端架构师知识图谱.md`、`docs/后端高级架构师能力图谱.md` |
 | 系统设计/微服务/八股教材 | `docs/系统设计教材*.md`、`docs/微服务面试题集.md` 等 |
-| 面试题库 | `面试题/` |
+| 面试题库 | `interview-questions/` |
 | 学习命令 | `.claude/commands/study.md`、`skill-test.md` |
 | 工作文件模板 | `docs/templates/` |
 | 报告/转换脚本 | `scripts/` |
+| 岗位爬虫 MCP（含免责声明） | `job-crawler/` |
 
 ## 工具链
 
 ```bash
 make md2pdf f=docs/后端缩写速查表.md   # Markdown → PDF（默认样式 assets/style.css）
-make md-pdf-dir d=面试题/md            # 批量导出目录 → <目录>/pdf/
+make md-pdf-dir d=interview-questions/md            # 批量导出目录 → <目录>/pdf/
 make pdf2md f=输入.pdf                 # PDF → Markdown（需 Python + PyMuPDF）
 ```
 

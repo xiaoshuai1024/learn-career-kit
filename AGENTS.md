@@ -21,7 +21,7 @@ docs/
   系统设计教材*.md / 微服务面试题集 / 后端八股与架构师面试教材 等  # 知识库教材
   templates/                    # 工作文件模板（生词本/错题本/学习记录/每日日志/技术学习清单）
                                 # 首次使用复制到 docs/ 同名位置
-面试题/                         # 面试题 md + 专用导出样式
+interview-questions/                         # 面试题 md + 专用导出样式
 scripts/                        # 评估报告 + md/pdf 转换脚本
 .claude/commands/               # /study /skill-test 命令（Agent 驱动学习入口）
 assets/                         # md2pdf 样式与可选字体
@@ -106,6 +106,17 @@ make info                       # 查看环境信息
 ## 包管理
 
 - `pnpm` 是唯一包管理器，禁用 npm/yarn
+
+## 岗位爬虫 MCP（job-crawler/）
+
+只读的多平台岗位采集 MCP server（BOSS直聘/猎聘/智联/51Job + 海尔/海信/浪潮/特来电官网），CDP 接管用户手动登录的浏览器，内置七层防风控。抓取结果写回 `docs/岗位列表.md`（文件不存在时自动从 `docs/templates/岗位列表.example.md` 初始化）。
+
+- 工具：`check_status` / `search_jobs({keyword,city,limit})` / `get_job_detail({jobUrl})` / `export_to_md({direction})`
+- 防风控参数：`job-crawler/config/safety.json`（调频率只动它）
+
+> ⚠️ **免责声明**：仅供个人学习与求职研究；遵守各平台服务条款与当地法律；只读不投递、验证码绝不破解；账号风控与法律风险由使用者自行承担。完整条款见 `job-crawler/README.md`，帮用户配置前必须先让其确认。
+
+**红线**：只读，绝不投递/打招呼/沟通；验证码只暂停等人手动过；强制独立 user-data-dir + 建议小号。
 
 ## 信息真实性原则
 

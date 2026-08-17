@@ -116,16 +116,16 @@
 
 ```bash
 # 生成单份 PDF（md 在 md/，PDF 输出到 pdf/）
-node scripts/md2pdf.mjs 面试题/md/高级前端开发-面试题.md -o 面试题/pdf/高级前端开发-面试题.pdf --style 面试题/style.css --no-header
+node scripts/md2pdf.mjs interview-questions/md/高级前端开发-面试题.md -o interview-questions/pdf/高级前端开发-面试题.pdf --style interview-questions/style.css --no-header
 
 # 批量生成所有 PDF
-for f in 面试题/md/*.md; do
+for f in interview-questions/md/*.md; do
   base=$(basename "$f" .md)
-  node scripts/md2pdf.mjs "$f" -o "面试题/pdf/$base.pdf" --style 面试题/style.css --no-header
+  node scripts/md2pdf.mjs "$f" -o "interview-questions/pdf/$base.pdf" --style interview-questions/style.css --no-header
 done
 ```
 
-- 样式：`面试题/style.css`（学习友好排版：蓝底模块标题、绿底答案引用、深色代码块、蓝表头表格）
+- 样式：`interview-questions/style.css`（学习友好排版：蓝底模块标题、绿底答案引用、深色代码块、蓝表头表格）
 - 转换脚本：`scripts/md2pdf.mjs`（Puppeteer + Chrome，已修复 blockquote 渲染）
 - 修改 md 后重新跑命令刷新 PDF
 

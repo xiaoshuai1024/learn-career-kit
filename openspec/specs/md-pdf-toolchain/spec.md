@@ -21,8 +21,8 @@ Markdown/PDF 文档转换工具链：面向中文学习资料的精美排版导�
 `scripts/md2pdf-batch.mjs --dir <目录>` 把目录下全部 `.md`（不含 `pdf/` 子目录）串行导出到 `<目录>/pdf/<同名>.pdf`，结束输出成功/失败统计；`--watch` 模式监听变更（300ms 防抖）自动重导出。
 
 #### Scenario: 批量导出
-- **WHEN** 运行 `make md-pdf-dir d=面试题/md`
-- **THEN** `面试题/md/pdf/` 下生成全部对应 PDF，任一失败不中断其余文件并在汇总中计数
+- **WHEN** 运行 `make md-pdf-dir d=interview-questions/md`
+- **THEN** `interview-questions/md/pdf/` 下生成全部对应 PDF，任一失败不中断其余文件并在汇总中计数
 
 ### Requirement: PDF 转 Markdown
 `scripts/pdf2md.py` 接收一个 PDF 文件，输出同名 `.md`（需 Python + PyMuPDF 环境）；文件不存在或参数缺失时给出明确错误提示并不产生产物。
